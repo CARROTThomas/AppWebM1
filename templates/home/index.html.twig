@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <h1>Les projets :</h1>
+
+    <hr>
+
+    <div class="row d-flex">
+
+        {% for project in projects %}
+
+            <div class="p-2 col-4 border">
+                <a class="btn w-100 border border-dark rounded" href="{{ path('app_show_project', {id:project.id}) }}">
+                    <div class="p-5">
+                        <h2>{{ project.name }}</h2>
+                    </div>
+                </a>
+            </div>
+
+
+        {% endfor %}
+    </div>
+{% endblock %}

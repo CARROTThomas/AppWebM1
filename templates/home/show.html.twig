@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <div class="pt-5 pb-5">
+        <div class="d-flex justify-content-between align-items-start">
+            <div class="col-6">
+                {% for image in project.images %}
+                    <div class="d-flex flex-column">
+                        <img class="rounded" src="{{ vich_uploader_asset(image, 'imageFile') }}">
+                    </div>
+                {% endfor %}
+                <div class="text-start">
+                    <h2>Contributor :</h2>
+                    <p>{{ project.contributor }}</p>
+                </div>
+            </div>
+            <div class="col-6 h-100">
+                <div class="d-flex flex-column justify-content-between ps-5 pe-5 text-center ps-3 pe-3">
+                    <div>
+                        <h1><strong>{{ project.name }}</strong></h1>
+                    </div>
+                    <hr>
+                    <div>
+                        <p>{{ project.description }}</p>
+                    </div>
+                    <div>
+                        <h2>Prototype :</h2>
+                        <a href="{{ project.url }}" target="_blank">{{ project.url }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="bg-dark">
+
+    <div class="pt-5">
+        {{ form_start(formComment, {'action':path('app_comment_new', {id:project.id})}) }}
+
+        {{ form_row(formComment.content) }}
+
+        <button class="btn btn-primary" type="submit">Envoyé</button>
+        {{ form_end(formComment) }}
+    </div>
+
+    <div class="pt-5">
+        {% for comment in project.comments %}
+            <div class="m-1 p-1">
+                <p class="m-0">{{ comment.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

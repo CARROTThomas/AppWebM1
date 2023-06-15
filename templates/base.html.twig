@@ -14,6 +14,34 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container-lg d-flex align-items-center justify-content-between">
+                <a id="logoNavBarre" class="nav-link text-light" href="{{ path('app_home') }}">M1 / DEV</a>
+                <!--<a id="logoNavBarre" class="navbar-brand text-light imgBase" href="#">LOGO</a>-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end text-light" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a class="nav-link text-light" href="{{ path('app_home') }}">projects</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" href="{{ path('app_projet_new') }}">new project</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header> <!-- BAR DE NAVIGATION -->
+
+        <div class="pt-5 pb-5">
+            <div class="container">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+
     </body>
 </html>
